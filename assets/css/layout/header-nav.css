@@ -1,0 +1,13 @@
+.site-header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(9,8,7,.56);backdrop-filter:blur(18px);border-bottom:1px solid rgba(217,170,75,.12)}
+.navbar{height:78px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.2px}
+.brand-mark{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;color:#070604;background:linear-gradient(135deg,var(--gold-2),var(--gold));box-shadow:0 12px 32px rgba(217,170,75,.25)}
+.brand-text{font-size:1rem}
+.nav-menu{display:flex;align-items:center;gap:6px;padding:7px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);border-radius:999px}
+.nav-menu a{padding:11px 16px;border-radius:999px;color:var(--muted);font-weight:700;font-size:.92rem;transition:.25s}
+.nav-menu a:hover,.nav-menu a.active{color:#080705;background:linear-gradient(135deg,var(--gold-2),var(--gold))}
+.nav-toggle{display:none;width:46px;height:46px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.04);cursor:pointer}
+.nav-toggle span{display:block;width:20px;height:2px;background:var(--gold-2);margin:5px auto;border-radius:10px;transition:.25s}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}

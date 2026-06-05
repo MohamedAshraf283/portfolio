@@ -1,0 +1,184 @@
+/* =========================================
+   Smart Floating Action Window
+========================================= */
+
+.action-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 260ms ease,
+    visibility 260ms ease;
+}
+
+.action-modal.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.action-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, rgba(217, 170, 75, 0.12), transparent 38%),
+    rgba(3, 3, 3, 0.68);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.action-modal-card {
+  position: relative;
+  width: min(420px, 100%);
+  border: 1px solid rgba(217, 170, 75, 0.28);
+  border-radius: 28px;
+  padding: 30px;
+  text-align: center;
+  background:
+    radial-gradient(circle at top, rgba(255, 228, 163, 0.13), transparent 42%),
+    linear-gradient(145deg, rgba(18, 16, 12, 0.96), rgba(7, 6, 4, 0.98));
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.58),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(18px) scale(0.96);
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.action-modal.show .action-modal-card {
+  transform: translateY(0) scale(1);
+}
+
+.action-modal-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 228, 163, 0.12), transparent);
+  pointer-events: none;
+}
+
+.action-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(217, 170, 75, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.045);
+  color: var(--gold-2);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: 250ms ease;
+}
+
+.action-modal-close:hover {
+  background: rgba(217, 170, 75, 0.14);
+  transform: rotate(90deg);
+}
+
+.action-modal-icon {
+  width: 66px;
+  height: 66px;
+  margin: 0 auto 18px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  background: linear-gradient(135deg, var(--gold-2), var(--gold));
+  color: #070604;
+  font-size: 1.5rem;
+  font-weight: 1000;
+  box-shadow:
+    0 18px 44px rgba(217, 170, 75, 0.24),
+    0 0 30px rgba(217, 170, 75, 0.18);
+}
+
+.action-modal-card h3 {
+  position: relative;
+  margin-bottom: 10px;
+  color: var(--gold-2);
+  font-size: 1.35rem;
+}
+
+.action-modal-card p {
+  position: relative;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+.action-modal-actions {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.action-modal-btn {
+  min-height: 48px;
+  border-radius: 999px;
+  padding: 12px 16px;
+  border: 1px solid rgba(217, 170, 75, 0.28);
+  cursor: pointer;
+  font-weight: 900;
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease,
+    background 250ms ease,
+    color 250ms ease;
+}
+
+.action-modal-btn:hover {
+  transform: translateY(-2px);
+}
+
+.action-modal-primary {
+  background: linear-gradient(135deg, var(--gold-2), var(--gold));
+  color: #070604;
+  box-shadow: 0 14px 34px rgba(217, 170, 75, 0.22);
+}
+
+.action-modal-secondary {
+  background: rgba(217, 170, 75, 0.08);
+  color: var(--gold-2);
+}
+
+.action-modal-secondary:hover {
+  background: rgba(217, 170, 75, 0.14);
+}
+
+@media (max-width: 480px) {
+  .action-modal {
+    padding: 14px;
+  }
+
+  .action-modal-card {
+    padding: 28px 20px 22px;
+    border-radius: 24px;
+  }
+
+  .action-modal-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .action-modal-btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .action-modal,
+  .action-modal-card,
+  .action-modal-btn,
+  .action-modal-close {
+    transition: none !important;
+  }
+}

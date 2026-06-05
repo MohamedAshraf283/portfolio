@@ -1,0 +1,209 @@
+/* =========================================
+   Projects Flip Cards - Final Fixed
+========================================= */
+
+.project-flip-card {
+  position: relative;
+  min-height: 330px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  perspective: 1400px;
+  overflow: visible;
+}
+
+.project-card-inner {
+  position: relative;
+  width: 100%;
+  min-height: 330px;
+  transform-style: preserve-3d;
+  transition:
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 250ms ease;
+}
+
+.project-flip-card.is-flipped .project-card-inner {
+  transform: rotateY(180deg);
+}
+
+.project-card-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 330px;
+  padding: 28px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background:
+    radial-gradient(circle at top right, rgba(217, 170, 75, 0.14), transparent 38%),
+    linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.035));
+  box-shadow: 0 18px 50px rgba(0,0,0,.24);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* الواجهة فقط تبقى hidden حتى لا يظهر محتوى غير مرغوب */
+.project-card-front {
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* الظهر لازم يكون visible حتى يظهر tooltip خارج حدود الكارت */
+.project-card-back {
+  overflow: visible;
+  transform: rotateY(180deg);
+  justify-content: flex-start;
+  gap: 42px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 228, 163, 0.14), transparent 36%),
+    linear-gradient(145deg, rgba(18, 18, 22, 0.96), rgba(5, 5, 8, 0.98));
+  pointer-events: auto;
+}
+
+.project-card-front::before,
+.project-card-back::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 0%),
+    rgba(255, 228, 163, 0.14),
+    transparent 36%
+  );
+  opacity: 0;
+  transition: 250ms ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.project-flip-card:hover .project-card-front::before,
+.project-flip-card:hover .project-card-back::before {
+  opacity: 1;
+}
+
+.project-front-content,
+.project-back-content {
+  position: relative;
+  z-index: 5;
+}
+
+.project-card-front h3,
+.project-card-back h3 {
+  font-size: 1.35rem;
+  color: var(--gold-2);
+  margin-bottom: 12px;
+}
+
+.project-card-front p,
+.project-card-back p {
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 20px;
+}
+
+.project-card-front .project-tags {
+  margin-top: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.project-back-label {
+  display: inline-flex;
+  width: max-content;
+  margin-bottom: 16px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(217, 170, 75, 0.1);
+  color: var(--gold-2);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.project-back-btn {
+  position: relative;
+  z-index: 50;
+  align-self: flex-start;
+  width: max-content;
+  border: 1px solid var(--line);
+  background: rgba(217, 170, 75, 0.1);
+  color: var(--gold-2);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  cursor: pointer;
+  pointer-events: auto;
+  transition:
+    background 250ms ease,
+    color 250ms ease,
+    transform 250ms ease;
+}
+
+.project-back-btn:hover {
+  background: var(--gold);
+  color: #080705;
+  transform: translateY(-2px);
+}
+
+.project-flip-hint {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 11px;
+  border: 1px solid rgba(217, 170, 75, 0.28);
+  border-radius: 999px;
+  color: var(--gold-2);
+  background: rgba(8, 8, 12, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.project-flip-hint span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 16px rgba(217, 170, 75, 0.85);
+  animation: projectFlipPulse 1.6s ease-in-out infinite;
+}
+
+.project-flip-hint small {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.project-flip-card.hide {
+  display: none;
+}
+
+@keyframes projectFlipPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-flip-card:hover .project-card-inner {
+    transform: rotateY(5deg) rotateX(2deg) translateY(-6px);
+  }
+
+  .project-flip-card.is-flipped:hover .project-card-inner {
+    transform: rotateY(180deg);
+  }
+}

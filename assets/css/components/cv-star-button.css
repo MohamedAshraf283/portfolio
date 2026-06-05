@@ -1,0 +1,189 @@
+/* =========================================
+   Download CV Star Button
+   Scoped to avoid affecting global buttons
+========================================= */
+.cv-star-btn {
+  --cv-btn-bg: linear-gradient(135deg, var(--gold-2), var(--gold));
+  --cv-btn-border: rgba(255, 228, 163, 0.72);
+  --cv-star-color: #fff7dc;
+  --cv-star-glow: rgba(255, 228, 163, 0.85);
+
+  overflow: visible;
+  isolation: isolate;
+  border: 1px solid var(--cv-btn-border);
+  background: var(--cv-btn-bg);
+  color: #070604;
+  box-shadow:
+    0 18px 44px rgba(217, 170, 75, 0.24),
+    0 0 0 rgba(217, 170, 75, 0);
+}
+
+/* منع لمعة .btn الأصلية من الظهور خارج زر Download CV */
+.cv-star-btn::before {
+  display: none;
+}
+
+.cv-star-btn .cv-btn-text,
+.cv-star-btn .cv-btn-icon {
+  position: relative;
+  z-index: 3;
+}
+
+.cv-star-btn .cv-btn-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(7, 6, 4, 0.12);
+  transition: transform 300ms ease, background 300ms ease;
+}
+
+.cv-star-btn:hover,
+.cv-star-btn:focus-visible {
+  background: rgba(217, 170, 75, 0.08);
+  color: var(--gold-2);
+  border-color: rgba(217, 170, 75, 0.82);
+  box-shadow:
+    0 0 28px rgba(217, 170, 75, 0.34),
+    0 18px 54px rgba(0, 0, 0, 0.32);
+}
+
+.cv-star-btn:hover .cv-btn-icon,
+.cv-star-btn:focus-visible .cv-btn-icon {
+  transform: translateY(2px);
+  background: rgba(217, 170, 75, 0.16);
+}
+.cv-star {
+  position: absolute;
+  display: block;
+  height: auto;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 2;
+  transform: translate3d(0, 0, 0) scale(0.25) rotate(0deg);
+  transform-origin: center;
+  filter: drop-shadow(0 0 0 transparent);
+  transition:
+    top 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    left 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 220ms ease,
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 650ms ease;
+}
+
+.cv-star svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.cv-star path {
+  fill: var(--cv-star-color);
+}
+
+.cv-star-1 { top: 48%; left: 48%; width: 24px; transition-duration: 950ms; }
+.cv-star-2 { top: 48%; left: 48%; width: 16px; transition-duration: 850ms; }
+.cv-star-3 { top: 48%; left: 48%; width: 7px;  transition-duration: 780ms; }
+.cv-star-4 { top: 48%; left: 48%; width: 10px; transition-duration: 820ms; }
+.cv-star-5 { top: 48%; left: 48%; width: 15px; transition-duration: 900ms; }
+.cv-star-6 { top: 48%; left: 48%; width: 8px;  transition-duration: 760ms; }
+
+.cv-star-btn:hover .cv-star,
+.cv-star-btn:focus-visible .cv-star {
+  opacity: 1;
+  filter:
+    drop-shadow(0 0 8px rgba(255, 247, 220, 0.95))
+    drop-shadow(0 0 18px var(--cv-star-glow));
+}
+
+.cv-star-btn:hover .cv-star-1,
+.cv-star-btn:focus-visible .cv-star-1 {
+  top: -58%;
+  left: -18%;
+  transform: scale(1.12) rotate(145deg);
+  animation: cvStarTwinkle 1400ms ease-in-out infinite alternate;
+}
+
+.cv-star-btn:hover .cv-star-2,
+.cv-star-btn:focus-visible .cv-star-2 {
+  top: -34%;
+  left: 16%;
+  transform: scale(0.92) rotate(-95deg);
+  animation: cvStarTwinkle 1200ms ease-in-out infinite alternate 120ms;
+}
+
+.cv-star-btn:hover .cv-star-3,
+.cv-star-btn:focus-visible .cv-star-3 {
+  top: 64%;
+  left: 18%;
+  transform: scale(0.85) rotate(80deg);
+  animation: cvStarTwinkle 1000ms ease-in-out infinite alternate 220ms;
+}
+
+.cv-star-btn:hover .cv-star-4,
+.cv-star-btn:focus-visible .cv-star-4 {
+  top: 18%;
+  left: 83%;
+  transform: scale(0.98) rotate(-130deg);
+  animation: cvStarTwinkle 1150ms ease-in-out infinite alternate 160ms;
+}
+
+.cv-star-btn:hover .cv-star-5,
+.cv-star-btn:focus-visible .cv-star-5 {
+  top: 34%;
+  left: 108%;
+  transform: scale(1.05) rotate(115deg);
+  animation: cvStarTwinkle 1300ms ease-in-out infinite alternate 80ms;
+}
+
+.cv-star-btn:hover .cv-star-6,
+.cv-star-btn:focus-visible .cv-star-6 {
+  top: -8%;
+  left: 66%;
+  transform: scale(0.82) rotate(-70deg);
+  animation: cvStarTwinkle 950ms ease-in-out infinite alternate 260ms;
+}
+
+@keyframes cvStarTwinkle {
+  from {
+    opacity: 0.72;
+    filter:
+      drop-shadow(0 0 5px rgba(255, 247, 220, 0.72))
+      drop-shadow(0 0 12px rgba(255, 228, 163, 0.5));
+  }
+
+  to {
+    opacity: 1;
+    filter:
+      drop-shadow(0 0 10px rgba(255, 247, 220, 1))
+      drop-shadow(0 0 22px rgba(255, 228, 163, 0.9));
+  }
+}
+@media (max-width: 680px) {
+  .cv-star-btn:hover .cv-star-1,
+  .cv-star-btn:focus-visible .cv-star-1 {
+    top: -42%;
+    left: 4%;
+  }
+
+  .cv-star-btn:hover .cv-star-2,
+  .cv-star-btn:focus-visible .cv-star-2 {
+    top: -26%;
+    left: 24%;
+  }
+
+  .cv-star-btn:hover .cv-star-5,
+  .cv-star-btn:focus-visible .cv-star-5 {
+    left: 88%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-star {
+    opacity: 0 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

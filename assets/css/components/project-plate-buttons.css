@@ -1,0 +1,244 @@
+/* =========================================
+   Project Back Small Plate Buttons - Fixed
+========================================= */
+
+.project-plate-actions {
+  position: relative;
+  z-index: 80;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+  overflow: visible;
+}
+
+.project-plate-btn {
+  --primary: var(--gold);
+  position: relative;
+  z-index: 90;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.45rem;
+  border: 1px solid rgba(217, 170, 75, 0.26);
+  background:
+    linear-gradient(to bottom, rgba(58, 61, 68, 0.95) 0%, rgba(21, 20, 18, 0.98) 100%);
+  box-shadow:
+    inset 0 2px 2px -1px rgba(255, 255, 255, 0.18),
+    inset 0 -5px 5px -2px rgba(0, 0, 0, 0.8),
+    0 12px 24px -8px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(217, 170, 75, 0.08);
+  cursor: pointer;
+  pointer-events: auto;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.project-plate-btn .warning-symbol {
+  width: 0;
+  height: 0;
+  border-left: 0.68rem solid transparent;
+  border-right: 0.68rem solid transparent;
+  border-bottom: 1.18rem solid var(--primary);
+  position: relative;
+  filter: drop-shadow(0 0 5px rgba(217, 170, 75, 0.35));
+}
+
+.project-plate-btn .warning-symbol::after {
+  content: "!";
+  position: absolute;
+  left: 50%;
+  top: 0.78rem;
+  transform: translate(-50%, -50%);
+  color: #111;
+  font-size: 0.88rem;
+  font-weight: 1000;
+  font-family: var(--font-main);
+}
+
+.project-plate-btn::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 0.65rem);
+  left: 50%;
+  z-index: 999;
+  transform: translateX(-50%) translateY(0.5rem);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+  padding: 0.55rem 0.9rem;
+  border-radius: 0.55rem;
+  background: linear-gradient(135deg, var(--gold-2), var(--gold));
+  color: #080705;
+  font-size: 0.78rem;
+  font-weight: 1000;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.38);
+  transition:
+    transform 0.3s cubic-bezier(0.2, 1.5, 0.5, 1),
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.project-plate-btn::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  z-index: 998;
+  width: 0;
+  height: 0;
+  border-left: 0.45rem solid transparent;
+  border-right: 0.45rem solid transparent;
+  border-top: 0.45rem solid var(--gold);
+  transform: translateX(-50%) translateY(0.5rem);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    transform 0.3s cubic-bezier(0.2, 1.5, 0.5, 1),
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.project-plate-btn:hover,
+.project-plate-btn:focus-visible {
+  border-color: rgba(217, 170, 75, 0.58);
+  animation: project-electric-shock 0.25s linear infinite;
+}
+
+.project-plate-btn:hover .warning-symbol,
+.project-plate-btn:focus-visible .warning-symbol {
+  animation: project-warning-pulse 1s ease-in-out infinite;
+}
+
+.project-plate-btn:hover::before,
+.project-plate-btn:hover::after,
+.project-plate-btn:focus-visible::before,
+.project-plate-btn:focus-visible::after {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes project-electric-shock {
+  0% {
+    transform: translate(0, 0);
+    box-shadow:
+      inset 0 2px 2px -1px rgba(255, 255, 255, 0.18),
+      inset 0 -5px 5px -2px rgba(0, 0, 0, 0.8),
+      0 12px 24px -8px rgba(0, 0, 0, 0.7);
+  }
+
+  20% {
+    transform: translate(-1px, 1px);
+    box-shadow:
+      inset 0 2px 2px -1px rgba(255, 255, 255, 0.18),
+      inset 0 -5px 5px -2px rgba(0, 0, 0, 0.8),
+      0 12px 24px -8px rgba(0, 0, 0, 0.7),
+      0 0 10px 1px var(--primary);
+  }
+
+  40% {
+    transform: translate(-1px, -1px);
+  }
+
+  60% {
+    transform: translate(1px, 1px);
+    box-shadow:
+      inset 0 2px 2px -1px rgba(255, 255, 255, 0.18),
+      inset 0 -5px 5px -2px rgba(0, 0, 0, 0.8),
+      0 12px 24px -8px rgba(0, 0, 0, 0.7),
+      0 0 10px 1px var(--primary);
+  }
+
+  80% {
+    transform: translate(1px, -1px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes project-warning-pulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 3px var(--primary));
+  }
+
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 9px var(--primary));
+  }
+
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 3px var(--primary));
+  }
+}
+
+@media (max-width: 680px) {
+  .project-flip-card,
+  .project-card-inner,
+  .project-card-face {
+    min-height: 350px;
+  }
+
+  .project-card-face {
+    padding: 22px;
+  }
+
+  .project-flip-hint {
+    top: 14px;
+    right: 14px;
+  }
+
+  .project-plate-actions {
+    gap: 10px;
+  }
+
+  .project-plate-btn {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .project-plate-btn::before {
+    max-width: 220px;
+    white-space: normal;
+    text-align: center;
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .project-flip-card,
+  .project-card-inner,
+  .project-card-face {
+    min-height: 390px;
+  }
+}
+
+
+
+/* Force project back button to be clickable */
+.project-card-back {
+  pointer-events: auto;
+}
+
+.project-back-btn {
+  position: relative;
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+.project-flip-card.is-flipped .project-card-back {
+  pointer-events: auto;
+}
+
+.project-flip-card.is-flipped .project-card-front {
+  pointer-events: none;

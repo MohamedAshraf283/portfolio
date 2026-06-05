@@ -1,0 +1,14 @@
+/* Main CSS entry point
+   Keep the import order unchanged because later files intentionally override earlier rules. */
+
+@import url('./base/variables-reset.css');
+@import url('./layout/header-nav.css');
+@import url('./sections/hero.css');
+@import url('./sections/content-sections.css');
+@import url('./components/tech-marquee.css');
+@import url('./components/profile-flip-card.css');
+@import url('./components/cv-star-button.css');
+@import url('./components/action-modal.css');
+@import url('./components/social-platforms.css');
+@import url('./components/project-flip-cards.css');
+@import url('./components/project-plate-buttons.css');

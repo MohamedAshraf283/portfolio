@@ -1,0 +1,368 @@
+/* =========================================
+   Profile Back Card Social Platforms
+========================================= */
+
+.profile-social-platforms {
+  position: relative;
+  z-index: 130;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  justify-items: center;
+  align-items: center;
+  margin-top: 22px;
+  padding: 10px 10px 34px;
+}
+.social-tooltip-container {
+  --social-color: var(--gold);
+  --social-color-2: var(--gold-2);
+  position: relative;
+  width: 64px;
+  height: 72px;
+  cursor: pointer;
+}
+
+.social-tooltip-container:nth-child(odd) {
+  transform: translateX(76px);
+}
+
+.social-tooltip-container:nth-child(even) {
+  transform: translateX(-76px);
+}
+
+.social-tooltip {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 210px;
+  padding: 10px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, -92%) scale(0.92);
+  transform-origin: bottom center;
+  transition:
+    opacity 260ms ease,
+    visibility 260ms ease,
+    transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at top, color-mix(in srgb, var(--social-color) 22%, transparent), transparent 55%),
+    rgba(8, 8, 12, 0.94);
+  border: 1px solid color-mix(in srgb, var(--social-color) 42%, transparent);
+  box-shadow:
+    inset 5px 5px 10px rgba(0, 0, 0, 0.18),
+    inset -5px -5px 16px rgba(255, 255, 255, 0.04),
+    0 18px 45px rgba(0, 0, 0, 0.38);
+}
+
+.social-tooltip-container:hover .social-tooltip,
+.social-tooltip-container:focus-within .social-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -112%) scale(1);
+}
+
+.social-tooltip-profile {
+  border-radius: 14px;
+  padding: 12px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--social-color) 26%, #080808), rgba(7, 6, 4, 0.98));
+  border: 1px solid color-mix(in srgb, var(--social-color) 46%, transparent);
+}
+
+.social-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-img {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--social-color);
+  font-size: 1rem;
+  font-weight: 1000;
+  border: 1px solid color-mix(in srgb, var(--social-color) 72%, transparent);
+  overflow: hidden;
+}
+
+.social-img-photo {
+  padding: 0;
+  background: rgba(8, 8, 12, 0.35);
+}
+
+.social-img-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.social-details {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.social-name {
+  color: #fff7dc;
+  font-size: 0.9rem;
+  font-weight: 1000;
+}
+
+.social-username {
+  max-width: 128px;
+  color: rgba(255, 247, 220, 0.72);
+  font-size: 0.76rem;
+  font-weight: 800;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.social-about {
+  margin-top: 8px;
+  color: rgba(255, 247, 220, 0.68);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.social-icon {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  color: var(--social-color);
+  text-decoration: none;
+  outline: none;
+}
+
+.social-layer {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border: 2px solid var(--social-color);
+  border-radius: 50%;
+  transition:
+    transform 320ms ease,
+    border-color 320ms ease,
+    box-shadow 320ms ease;
+  box-shadow:
+    0 0 14px color-mix(in srgb, var(--social-color) 42%, transparent),
+    0 0 24px color-mix(in srgb, var(--social-color) 18%, transparent);
+}
+
+.social-icon:hover .social-layer,
+.social-icon:focus-visible .social-layer {
+  transform: rotate(-35deg) skew(18deg);
+  border-color: var(--social-color-2);
+  box-shadow:
+    0 0 24px color-mix(in srgb, var(--social-color) 70%, transparent),
+    0 0 40px color-mix(in srgb, var(--social-color) 38%, transparent);
+}
+
+.social-layer span {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--social-color);
+  border-radius: 50%;
+  transition:
+    transform 320ms ease,
+    opacity 320ms ease,
+    box-shadow 320ms ease;
+}
+
+.social-icon:hover .social-layer span,
+.social-icon:focus-visible .social-layer span {
+  box-shadow: -1px 1px 4px var(--social-color);
+}
+
+.social-icon:hover .social-layer span:nth-child(1),
+.social-icon:focus-visible .social-layer span:nth-child(1) {
+  opacity: 0.22;
+}
+
+.social-icon:hover .social-layer span:nth-child(2),
+.social-icon:focus-visible .social-layer span:nth-child(2) {
+  opacity: 0.44;
+  transform: translate(5px, -5px);
+}
+
+.social-icon:hover .social-layer span:nth-child(3),
+.social-icon:focus-visible .social-layer span:nth-child(3) {
+  opacity: 0.66;
+  transform: translate(10px, -10px);
+}
+
+.social-icon:hover .social-layer span:nth-child(4),
+.social-icon:focus-visible .social-layer span:nth-child(4) {
+  opacity: 0.88;
+  transform: translate(15px, -15px);
+}
+
+.social-icon:hover .social-layer .social-symbol,
+.social-icon:focus-visible .social-layer .social-symbol {
+  opacity: 1;
+  transform: translate(20px, -20px);
+}
+
+.social-symbol {
+  display: grid;
+  place-items: center;
+  font-size: 1.18rem;
+  font-weight: 1000;
+  color: #070604;
+  background:
+    linear-gradient(135deg, var(--social-color-2), var(--social-color));
+  border-color: var(--social-color);
+  box-shadow:
+    0 0 18px color-mix(in srgb, var(--social-color) 62%, transparent);
+  overflow: hidden;
+}
+
+.social-symbol-img {
+  background: rgba(255, 255, 255, 0.96);
+  padding: 7px;
+}
+
+.social-symbol-img img {
+  display: block;
+  width: 72%;
+  height: 72%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.social-label {
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  opacity: 0;
+  color: var(--social-color-2);
+  font-size: 0.74rem;
+  font-weight: 900;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  transition:
+    bottom 260ms ease,
+    opacity 260ms ease;
+}
+
+.social-icon:hover .social-label,
+.social-icon:focus-visible .social-label {
+  bottom: -28px;
+  opacity: 1;
+}
+
+/* Platform colors */
+.social-facebook {
+  --social-color: #1877f2;
+  --social-color-2: #8fc2ff;
+}
+
+.social-instagram {
+  --social-color: #e4405f;
+  --social-color-2: #ffd0dc;
+}
+
+.social-telegram {
+  --social-color: #2aabee;
+  --social-color-2: #bdefff;
+}
+
+.social-whatsapp {
+  --social-color: #25d366;
+  --social-color-2: #caffdd;
+}
+
+.social-linkedin {
+  --social-color: #0a66c2;
+  --social-color-2: #b9dcff;
+}
+
+.social-github {
+  --social-color: #d9aa4b;
+  --social-color-2: #ffe4a3;
+}
+
+@media (max-width: 768px) {
+  .profile-social-platforms {
+    gap: 10px;
+    margin-top: 18px;
+    padding-bottom: 22px;
+  }
+
+  .social-tooltip {
+    width: 190px;
+  }
+
+  .social-tooltip-container:nth-child(odd) {
+    transform: translateX(58px);
+  }
+
+  .social-tooltip-container:nth-child(even) {
+    transform: translateX(-58px);
+  }
+}
+
+@media (max-width: 420px) {
+  .profile-social-platforms {
+    gap: 8px;
+  }
+
+  .social-tooltip-container {
+    height: 66px;
+  }
+
+  .social-tooltip-container:nth-child(odd) {
+    transform: translateX(44px);
+  }
+
+  .social-tooltip-container:nth-child(even) {
+    transform: translateX(-44px);
+  }
+
+  .social-layer {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+@supports not (color: color-mix(in srgb, #fff 50%, transparent)) {
+  .social-tooltip,
+  .social-tooltip-profile {
+    border-color: rgba(217, 170, 75, 0.34);
+  }
+
+  .social-layer {
+    box-shadow: 0 0 18px rgba(217, 170, 75, 0.28);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-tooltip,
+  .social-layer,
+  .social-layer span,
+  .social-symbol,
+  .social-label {
+    transition: none !important;
+  }
+
+  .social-icon:hover .social-layer,
+  .social-icon:focus-visible .social-layer {
+    transform: none;
+  }
+
+  .social-icon:hover .social-layer span,
+  .social-icon:focus-visible .social-layer span,
+  .social-icon:hover .social-layer .social-symbol,
+  .social-icon:focus-visible .social-layer .social-symbol {
+    transform: none;
+  }
